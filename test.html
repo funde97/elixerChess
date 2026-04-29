@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Test Page</title>
+    <title>Auto Play Video</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
-        .test-box { border: 2px solid #333; padding: 10px; margin-top: 10px; }
+        body {
+            margin: 0;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+        }
     </style>
 </head>
 <body>
-    <h1>HTML5 Test File</h1>
-    <p>This is a basic paragraph to test text rendering.</p>
-    
-    <div class="test-box">
-        <h3>Common Elements Test:</h3>
-        <ul>
-            <li>Unordered List Item</li>
-            <li><strong>Bold Text</strong> and <em>Italic Text</em></li>
-            <li><a href="https://www.w3schools.com" target="_blank">External Link (W3Schools)</a></li>
-        </ul>
-    </div>
 
-    <button onclick="alert('JavaScript is working!')">Test JavaScript</button>
+    <video autoplay muted loop controls>
+        <source src="your-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
 </body>
 </html>
