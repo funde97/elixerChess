@@ -1399,6 +1399,74 @@
             dashboard.classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+// ═══════════════════════════════════════════════
+//  SUBMIT TEST
+// ═══════════════════════════════════════════════
+function submitTest(testType) {
+    const key = answerKeys[testType];
+    const questions = Object.keys(key);
+    let score = 0;
+    let allAnswered = true;
+
+    questions.forEach(q => {
+        const selected = document.querySelector(`input[name="${q}"]:checked`);
+        if (!selected) { allAnswered = false; return; }
+        if (selected.value === key[q]) score++;
+    });
+
+    if (!allAnswered) {
+        showToast('⚠️ Please answer all questions before submitting.', '#e67e22');
+        return;
+    }
+
+    const total = questions.length;
+    const pct = Math.round((score / total) * 100);
+    const pass = pct >= 80;
+
+    // Update circle
+    const circle   = document.getElementById(testType + '-circle');
+    const numEl    = document.getElementById(testType + '-score-num');
+    const pctEl    = document.getElementById(testType + '-score-pct');
+    const titleEl  = document.getElementById(testType + '-result-title');
+    const msgEl    = document.getElementById(testType + '-result-msg');
+    const actionsEl = document.getElementById(testType + '-actions');
+
+    numEl.textContent = score + '/' + total;
+    pctEl.textContent = pct + '%';
+    circle.className = 'score-circle ' + (pass ? 'pass' : 'fail');
+
+    if (pass) {
+        titleEl.textContent = '🎉 Great Job!';
+        msgEl.textContent = 'You scored ' + pct + '%. Excellent understanding of the topic!';
+        actionsEl.innerHTML = '';
+    } else {
+        titleEl.textContent = '📘 Keep Practising';
+        msgEl.textContent = 'You scored ' + pct + '%. You need 80% to pass. Review the theory and try again.';
+        actionsEl.innerHTML =
+            '<button class="btn-theory" onclick="showPage(\'theory\')"><i class="fas fa-book"></i> Go to Theory</button>' +
+            '<button class="btn-retry" onclick="retryTest(\'' + testType + '\')"><i class="fas fa-redo"></i> Retry Test</button>';
+    }
+
+    // Hide questions, show result
+    document.getElementById(testType + '-questions').style.display = 'none';
+    const resultBox = document.getElementById(testType + '-result');
+    resultBox.classList.add('show');
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ═══════════════════════════════════════════════
+//  RETRY TEST
+// ═══════════════════════════════════════════════
+function retryTest(testType) {
+    // Clear all radio selections
+    document.querySelectorAll(`#page-${testType} input[type="radio"]`).forEach(r => r.checked = false);
+
+    // Hide result, show questions
+    document.getElementById(testType + '-result').classList.remove('show');
+    document.getElementById(testType + '-questions').style.display = 'block';
+
+    document.getElementById('page-' + testType).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 
         // ── Star rating ──────────────────────────────────────────────
         const stars = document.querySelectorAll('#starRating i');
