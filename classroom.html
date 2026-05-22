@@ -823,6 +823,154 @@
             font-size: 13px;
             font-weight: 500;
         }
+
+        /* ============================================================
+           NEW: Score Result Box (Pretest & Posttest)
+           ============================================================ */
+        .score-result-box {
+            display: none;
+            background: #fff;
+            border-radius: 10px;
+            border: 2px solid #3498db;
+            padding: 32px 24px;
+            margin-top: 24px;
+            text-align: center;
+        }
+        .score-result-box.show {
+            display: block;
+            animation: fadeInPage 0.4s ease;
+        }
+        .score-circle {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-weight: 700;
+            border: 6px solid;
+        }
+        .score-circle.pass { border-color: #27ae60; background: #eafaf1; color: #27ae60; }
+        .score-circle.fail { border-color: #e74c3c; background: #fdf0ef; color: #e74c3c; }
+        .score-circle .score-num { font-size: 28px; line-height: 1; }
+        .score-circle .score-label { font-size: 12px; margin-top: 4px; }
+        .score-result-box h3 { font-size: 22px; color: #2c3e50; margin-bottom: 6px; }
+        .score-result-box p  { color: #7f8c8d; margin-bottom: 20px; }
+        .score-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .btn-retry  { background: linear-gradient(to right, #e74c3c, #c0392b); color: #fff; border: none; padding: 10px 24px; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.25s; }
+        .btn-retry:hover  { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(231,76,60,0.3); }
+        .btn-theory { background: linear-gradient(to right, #f39c12, #e67e22); color: #fff; border: none; padding: 10px 24px; border-radius: 6px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.25s; }
+        .btn-theory:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(243,156,18,0.3); }
+
+        /* ============================================================
+           NEW: Simulation Hero Section
+           ============================================================ */
+        .sim-hero {
+            background: linear-gradient(135deg, #1a2530 0%, #2c3e50 60%, #1a6b9a 100%);
+            border-radius: 14px;
+            padding: 52px 32px;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+        .sim-hero::before {
+            content: '';
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 200px; height: 200px;
+            background: rgba(52,152,219,0.15);
+            border-radius: 50%;
+        }
+        .sim-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: -30px;
+            width: 260px; height: 260px;
+            background: rgba(52,152,219,0.08);
+            border-radius: 50%;
+        }
+        .sim-hero-icon { font-size: 64px; color: #3498db; margin-bottom: 18px; position: relative; z-index: 1; }
+        .sim-hero h2  { font-size: 28px; font-weight: 700; margin-bottom: 10px; position: relative; z-index: 1; }
+        .sim-hero p   { font-size: 15px; color: #bdc3c7; max-width: 500px; margin: 0 auto 28px; position: relative; z-index: 1; }
+        .sim-start-btn {
+            background: linear-gradient(to right, #3498db, #2c80b9);
+            color: #fff;
+            border: none;
+            padding: 16px 42px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 6px 24px rgba(52,152,219,0.45);
+            letter-spacing: 0.5px;
+        }
+        .sim-start-btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 10px 30px rgba(52,152,219,0.55);
+        }
+        .sim-start-btn i { font-size: 20px; }
+        .sim-info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 18px;
+        }
+        .sim-info-card { background: #f0f7ff; border-radius: 10px; padding: 20px 16px; text-align: center; border: 1px solid #d1e7ff; }
+        .sim-info-card i  { font-size: 28px; color: #3498db; margin-bottom: 10px; }
+        .sim-info-card h5 { font-size: 14px; font-weight: 700; color: #2c3e50; margin-bottom: 4px; }
+        .sim-info-card p  { font-size: 13px; color: #7f8c8d; }
+
+        /* ============================================================
+           NEW: Toast Notification
+           ============================================================ */
+        .toast {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            background: #27ae60;
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(39,174,96,0.4);
+            z-index: 9999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        /* Saved feedback entries */
+        .saved-feedback-entry {
+            background: #fff;
+            border: 1px solid #dce8f5;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+        .saved-feedback-entry .fb-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .saved-feedback-entry .fb-meta strong { color: #2c3e50; }
+        .saved-feedback-entry .fb-meta span   { font-size: 13px; color: #7f8c8d; }
+        .saved-feedback-entry .fb-stars       { margin-bottom: 4px; color: #f39c12; font-size: 15px; }
+        .saved-feedback-entry .fb-tag         { font-size: 13px; color: #3498db; }
+        .saved-feedback-entry .fb-comment     { font-size: 14px; color: #555; margin-top: 4px; }
     </style>
 </head>
 <body>
@@ -938,7 +1086,7 @@
              CARD PAGES
              ============================================================ -->
  
-        <!-- PAGE: Aim -->
+        <!-- PAGE: Aim (unchanged) -->
         <div id="page-aim" class="card-page content">
             <button class="back-btn" onclick="showDashboard()"><i class="fas fa-arrow-left"></i> Back</button>
             <div class="card-page-header">
@@ -959,9 +1107,7 @@
             </div>
         </div>
 
-        <!-- ============================================================
-             PAGE: Theory — UPDATED to Spring Mass System
-             ============================================================ -->
+        <!-- PAGE: Theory (unchanged) -->
         <div id="page-theory" class="card-page content">
             <button class="back-btn" onclick="showDashboard()"><i class="fas fa-arrow-left"></i> Back</button>
             <div class="card-page-header">
@@ -1163,71 +1309,59 @@
             </div>
         </div>
 
-        <!-- PAGE: Pretest -->
-            <div id="page-pretest" class="card-page">
-                <div class="card-page-header">
-                    <i class="fas fa-clipboard-list"></i>
-                    <div><h2>Pretest</h2><p>Assess your prior knowledge before the experiment</p></div>
-                </div>
-
-                <div id="pretest-questions">
-                    <!-- Q1 -->
-                    <div class="mcq-question">
-                        <p>1. What does the damping coefficient (c) represent in a spring-mass system?</p>
-                        <label class="mcq-option"><input type="radio" name="pre_q1" value="A"> A) Stiffness of the spring</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q1" value="B"> B) Resistance opposing motion</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q1" value="C"> C) Mass of the object</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q1" value="D"> D) Frequency of oscillation</label>
-                    </div>
-                    <!-- Q2 -->
-                    <div class="mcq-question">
-                        <p>2. In a spring-mass system, the restoring force is given by:</p>
-                        <label class="mcq-option"><input type="radio" name="pre_q2" value="A"> A) F = ma</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q2" value="B"> B) F = -kx</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q2" value="C"> C) F = cv</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q2" value="D"> D) F = mg</label>
-                    </div>
-                    <!-- Q3 -->
-                    <div class="mcq-question">
-                        <p>3. Which condition describes a critically damped system?</p>
-                        <label class="mcq-option"><input type="radio" name="pre_q3" value="A"> A) c² &gt; 4mk</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q3" value="B"> B) c² &lt; 4mk</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q3" value="C"> C) c² = 4mk</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q3" value="D"> D) c = 0</label>
-                    </div>
-                    <!-- Q4 -->
-                    <div class="mcq-question">
-                        <p>4. For an undamped system (c = 0), the motion is:</p>
-                        <label class="mcq-option"><input type="radio" name="pre_q4" value="A"> A) Exponentially decaying</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q4" value="B"> B) Simple harmonic (perpetual oscillation)</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q4" value="C"> C) Overdamped</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q4" value="D"> D) Aperiodic</label>
-                    </div>
-                    <!-- Q5 -->
-                    <div class="mcq-question">
-                        <p>5. The units of the spring constant k are:</p>
-                        <label class="mcq-option"><input type="radio" name="pre_q5" value="A"> A) kg·m/s²</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q5" value="B"> B) N/m</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q5" value="C"> C) N·s/m</label>
-                        <label class="mcq-option"><input type="radio" name="pre_q5" value="D"> D) m/s²</label>
-                    </div>
-
-                    <button class="submit-btn" onclick="submitTest('pretest')"><i class="fas fa-paper-plane"></i> &nbsp;Submit Answers</button>
-                </div>
-
-                <!-- Score Result Box -->
-                <div class="score-result-box" id="pretest-result">
-                    <div class="score-circle" id="pretest-circle">
-                        <span class="score-num" id="pretest-score-num">0/5</span>
-                        <span class="score-label" id="pretest-score-pct">0%</span>
-                    </div>
-                    <h3 id="pretest-result-title">Result</h3>
-                    <p id="pretest-result-msg"></p>
-                    <div class="score-actions" id="pretest-actions"></div>
+        <!-- ============================================================
+             PAGE: Pretest  ← UPDATED
+             ============================================================ -->
+        <div id="page-pretest" class="card-page content">
+            <button class="back-btn" onclick="showDashboard()"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="card-page-header">
+                <i class="fas fa-question-circle"></i>
+                <div>
+                    <h2>Pretest</h2>
+                    <p>Test your prior knowledge before starting the experiment</p>
                 </div>
             </div>
 
-        <!-- PAGE: Simulation -->
+            <div id="pretest-questions">
+                <div class="mcq-question">
+                    <p>1. Which law is used to derive the spring force in a spring mass system?</p>
+                    <label class="mcq-option"><input type="radio" name="q1" value="A"> Newton's Second Law</label>
+                    <label class="mcq-option"><input type="radio" name="q1" value="B"> Hooke's Law</label>
+                    <label class="mcq-option"><input type="radio" name="q1" value="C"> Faraday's Law</label>
+                    <label class="mcq-option"><input type="radio" name="q1" value="D"> Ohm's Law</label>
+                </div>
+                <div class="mcq-question">
+                    <p>2. The damping force in a spring mass system is proportional to:</p>
+                    <label class="mcq-option"><input type="radio" name="q2" value="A"> Displacement</label>
+                    <label class="mcq-option"><input type="radio" name="q2" value="B"> Acceleration</label>
+                    <label class="mcq-option"><input type="radio" name="q2" value="C"> Velocity</label>
+                    <label class="mcq-option"><input type="radio" name="q2" value="D"> Position</label>
+                </div>
+                <div class="mcq-question">
+                    <p>3. The equation \(m\ddot{x} + c\dot{x} + kx = 0\) is a:</p>
+                    <label class="mcq-option"><input type="radio" name="q3" value="A"> First-order linear ODE</label>
+                    <label class="mcq-option"><input type="radio" name="q3" value="B"> Second-order linear ODE</label>
+                    <label class="mcq-option"><input type="radio" name="q3" value="C"> Partial differential equation</label>
+                    <label class="mcq-option"><input type="radio" name="q3" value="D"> Non-linear ODE</label>
+                </div>
+                <button class="submit-btn" onclick="submitTest('pretest')">Submit Answers</button>
+            </div>
+
+            <!-- Score result box -->
+            <div class="score-result-box" id="pretest-result">
+                <div class="score-circle" id="pretest-circle">
+                    <span class="score-num" id="pretest-score-num">0/3</span>
+                    <span class="score-label" id="pretest-score-pct">0%</span>
+                </div>
+                <h3 id="pretest-result-title">Result</h3>
+                <p id="pretest-result-msg"></p>
+                <div class="score-actions" id="pretest-actions"></div>
+            </div>
+        </div>
+
+        <!-- ============================================================
+             PAGE: Simulation  ← UPDATED
+             ============================================================ -->
         <div id="page-simulation" class="card-page content">
             <button class="back-btn" onclick="showDashboard()"><i class="fas fa-arrow-left"></i> Back</button>
             <div class="card-page-header">
@@ -1237,14 +1371,43 @@
                     <p>Interactive Spring Mass System experiment</p>
                 </div>
             </div>
-            <div class="sim-placeholder">
-                <i class="fas fa-compress-alt"></i>
-                <h3>Spring Mass Simulation</h3>
-                <p>The interactive simulation will be embedded here. Users can adjust mass, spring constant, and damping coefficient to visualize system behavior.</p>
+
+            <div class="sim-hero">
+                <div class="sim-hero-icon"><i class="fas fa-compress-alt"></i></div>
+                <h2>Spring Mass System Simulation</h2>
+                <p>Launch the interactive simulation to visualise underdamped, critically damped, and overdamped responses of the spring mass system in real time.</p>
+                <button class="sim-start-btn" onclick="window.open('https://web.whatsapp.com','_blank')">
+                    <i class="fas fa-play-circle"></i> Start Animation
+                </button>
+            </div>
+
+            <div class="sim-info-cards">
+                <div class="sim-info-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h5>Adjustable Parameters</h5>
+                    <p>Tune mass, damping coefficient, and spring constant</p>
+                </div>
+                <div class="sim-info-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h5>Live Graph</h5>
+                    <p>Displacement vs. time plotted in real time</p>
+                </div>
+                <div class="sim-info-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <h5>Damping Regimes</h5>
+                    <p>Observe under-, critical, and overdamped behaviour</p>
+                </div>
+                <div class="sim-info-card">
+                    <i class="fas fa-external-link-alt"></i>
+                    <h5>Opens Externally</h5>
+                    <p>Simulation launches in a new browser tab</p>
+                </div>
             </div>
         </div>
 
-        <!-- PAGE: Posttest -->
+        <!-- ============================================================
+             PAGE: Posttest  ← UPDATED
+             ============================================================ -->
         <div id="page-posttest" class="card-page content">
             <button class="back-btn" onclick="showDashboard()"><i class="fas fa-arrow-left"></i> Back</button>
             <div class="card-page-header">
@@ -1254,31 +1417,61 @@
                     <p>Evaluate your understanding after the experiment</p>
                 </div>
             </div>
-            <div class="mcq-question">
-                <p>1. When \(\alpha^2 > \omega_n^2\), the system is:</p>
-                <label class="mcq-option"><input type="radio" name="pq1"> Underdamped</label>
-                <label class="mcq-option"><input type="radio" name="pq1"> Critically damped</label>
-                <label class="mcq-option"><input type="radio" name="pq1"> Overdamped</label>
-                <label class="mcq-option"><input type="radio" name="pq1"> Undamped</label>
+
+            <div id="posttest-questions">
+                <div class="mcq-question">
+                    <p>1. When \(\alpha^2 > \omega_n^2\), the system is:</p>
+                    <label class="mcq-option"><input type="radio" name="pq1" value="A"> Underdamped</label>
+                    <label class="mcq-option"><input type="radio" name="pq1" value="B"> Critically damped</label>
+                    <label class="mcq-option"><input type="radio" name="pq1" value="C"> Overdamped</label>
+                    <label class="mcq-option"><input type="radio" name="pq1" value="D"> Undamped</label>
+                </div>
+                <div class="mcq-question">
+                    <p>2. For an underdamped system, the solution involves:</p>
+                    <label class="mcq-option"><input type="radio" name="pq2" value="A"> Only exponential terms</label>
+                    <label class="mcq-option"><input type="radio" name="pq2" value="B"> Exponential × sinusoidal terms</label>
+                    <label class="mcq-option"><input type="radio" name="pq2" value="C"> Only sinusoidal terms</label>
+                    <label class="mcq-option"><input type="radio" name="pq2" value="D"> Polynomial terms</label>
+                </div>
+                <div class="mcq-question">
+                    <p>3. The natural angular frequency \(\omega_n\) is given by:</p>
+                    <label class="mcq-option"><input type="radio" name="pq3" value="A"> \(\sqrt{c/m}\)</label>
+                    <label class="mcq-option"><input type="radio" name="pq3" value="B"> \(\sqrt{k/m}\)</label>
+                    <label class="mcq-option"><input type="radio" name="pq3" value="C"> \(\sqrt{m/k}\)</label>
+                    <label class="mcq-option"><input type="radio" name="pq3" value="D"> \(k/m\)</label>
+                </div>
+                <!-- Q4 from PDF: m=2, c=4, k=8 -->
+                <div class="mcq-question">
+                    <p>4. A mass of 2 kg is attached to a spring with spring constant 8 N/m and damping coefficient 4. What is the correct differential equation?</p>
+                    <label class="mcq-option"><input type="radio" name="pq4" value="A"> \(2x'' + 4x' + 8x = 0\)</label>
+                    <label class="mcq-option"><input type="radio" name="pq4" value="B"> \(2x'' + 8x' + 4x = 0\)</label>
+                    <label class="mcq-option"><input type="radio" name="pq4" value="C"> \(4x'' + 2x' + 8x = 0\)</label>
+                    <label class="mcq-option"><input type="radio" name="pq4" value="D"> \(8x'' + 4x' + 2x = 0\)</label>
+                </div>
+                <!-- Q5 from PDF: m=1, c=6, k=9 -->
+                <div class="mcq-question">
+                    <p>5. For m = 1, c = 6, k = 9, the system exhibits:</p>
+                    <label class="mcq-option"><input type="radio" name="pq5" value="A"> Underdamped motion</label>
+                    <label class="mcq-option"><input type="radio" name="pq5" value="B"> Critically damped motion</label>
+                    <label class="mcq-option"><input type="radio" name="pq5" value="C"> Overdamped motion</label>
+                    <label class="mcq-option"><input type="radio" name="pq5" value="D"> Simple harmonic motion</label>
+                </div>
+                <button class="submit-btn" onclick="submitTest('posttest')">Submit Answers</button>
             </div>
-            <div class="mcq-question">
-                <p>2. For an underdamped system, the solution involves:</p>
-                <label class="mcq-option"><input type="radio" name="pq2"> Only exponential terms</label>
-                <label class="mcq-option"><input type="radio" name="pq2"> Exponential × sinusoidal terms</label>
-                <label class="mcq-option"><input type="radio" name="pq2"> Only sinusoidal terms</label>
-                <label class="mcq-option"><input type="radio" name="pq2"> Polynomial terms</label>
+
+            <!-- Score result box -->
+            <div class="score-result-box" id="posttest-result">
+                <div class="score-circle" id="posttest-circle">
+                    <span class="score-num" id="posttest-score-num">0/5</span>
+                    <span class="score-label" id="posttest-score-pct">0%</span>
+                </div>
+                <h3 id="posttest-result-title">Result</h3>
+                <p id="posttest-result-msg"></p>
+                <div class="score-actions" id="posttest-actions"></div>
             </div>
-            <div class="mcq-question">
-                <p>3. The natural angular frequency \(\omega_n\) is given by:</p>
-                <label class="mcq-option"><input type="radio" name="pq3"> \(\sqrt{c/m}\)</label>
-                <label class="mcq-option"><input type="radio" name="pq3"> \(\sqrt{k/m}\)</label>
-                <label class="mcq-option"><input type="radio" name="pq3"> \(\sqrt{m/k}\)</label>
-                <label class="mcq-option"><input type="radio" name="pq3"> \(k/m\)</label>
-            </div>
-            <button class="submit-btn">Submit Answers</button>
         </div>
 
-        <!-- PAGE: References -->
+        <!-- PAGE: References (unchanged + one addition) -->
         <div id="page-references" class="card-page content">
             <button class="back-btn" onclick="showDashboard()"><i class="fas fa-arrow-left"></i> Back</button>
             <div class="card-page-header">
@@ -1294,10 +1487,11 @@
                 <li><i class="fas fa-book"></i> Grewal, B. S. — <em>Higher Engineering Mathematics</em>, Khanna Publishers.</li>
                 <li><i class="fas fa-globe"></i> NPTEL Lectures on Engineering Mathematics — <em>Differential Equations and Applications</em>.</li>
                 <li><i class="fas fa-globe"></i> MIT OpenCourseWare — <em>18.03 Differential Equations</em>.</li>
+                <li><i class="fas fa-robot"></i> Claude (Anthropic) — AI assistant used for content structuring and interactive lab development, <em>claude.ai</em>.</li>
             </ul>
         </div>
 
-        <!-- PAGE: Contributors -->
+        <!-- PAGE: Contributors (unchanged) -->
         <div id="page-contributors" class="card-page content">
             <button class="back-btn" onclick="showDashboard()"><i class="fas fa-arrow-left"></i> Back</button>
             <div class="card-page-header">
@@ -1331,7 +1525,9 @@
             </div>
         </div>
 
-        <!-- PAGE: Feedback -->
+        <!-- ============================================================
+             PAGE: Feedback  ← UPDATED
+             ============================================================ -->
         <div id="page-feedback" class="card-page content">
             <button class="back-btn" onclick="showDashboard()"><i class="fas fa-arrow-left"></i> Back</button>
             <div class="card-page-header">
@@ -1341,11 +1537,22 @@
                     <p>Share your experience with us</p>
                 </div>
             </div>
+
+            <!-- Previously saved feedback entries -->
+            <div id="feedback-saved-list" style="display:none; margin-bottom:28px;">
+                <h4 style="color:#2c3e50; margin-bottom:14px;">
+                    <i class="fas fa-history" style="color:#3498db; margin-right:8px;"></i>Previously Submitted Feedback
+                </h4>
+                <div id="feedback-entries"></div>
+            </div>
+
             <div class="feedback-form">
                 <label>Name</label>
-                <input type="text" placeholder="Your name">
+                <input type="text" id="fb-name" placeholder="Your name">
+
                 <label>Email</label>
-                <input type="email" placeholder="Your email">
+                <input type="email" id="fb-email" placeholder="Your email">
+
                 <label>Rating</label>
                 <div class="star-rating" id="starRating">
                     <i class="fas fa-star" data-val="1"></i>
@@ -1354,9 +1561,21 @@
                     <i class="fas fa-star" data-val="4"></i>
                     <i class="fas fa-star" data-val="5"></i>
                 </div>
+                <input type="hidden" id="fb-rating" value="0">
+
+                <label>How useful was the simulation?</label>
+                <select id="fb-useful">
+                    <option value="">-- Select --</option>
+                    <option>Very Useful</option>
+                    <option>Useful</option>
+                    <option>Neutral</option>
+                    <option>Not Very Useful</option>
+                </select>
+
                 <label>Comments</label>
-                <textarea rows="5" placeholder="Write your feedback here..."></textarea>
-                <button class="submit-btn">Submit Feedback</button>
+                <textarea id="fb-comments" rows="5" placeholder="Write your feedback here..."></textarea>
+
+                <button class="submit-btn" onclick="saveFeedback()">Submit Feedback</button>
             </div>
         </div>
  
@@ -1367,9 +1586,12 @@
             <p>© 2026 <span class="footer-logo">Virtual Labs</span> | <span class="footer-logo">PCCE</span> | Applied Sciences & Humanities Department</p>
         </div>
     </footer>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toast-msg"></span></div>
  
     <script>
-        // ── Card navigation ──────────────────────────────────────────
+        // ── Card navigation (original, unchanged) ───────────────────
         const dashboard = document.getElementById('main-dashboard');
         const cards     = document.querySelectorAll('.section-card');
         const pages     = document.querySelectorAll('.card-page');
@@ -1377,20 +1599,17 @@
         cards.forEach(card => {
             card.addEventListener('click', () => {
                 const targetId = card.dataset.target;
-                // hide dashboard
                 dashboard.classList.add('hidden');
-                // hide all pages
                 pages.forEach(p => p.classList.remove('active-page'));
-                // show target
                 document.getElementById(targetId).classList.add('active-page');
-                // update active card
                 cards.forEach(c => c.classList.remove('active'));
                 card.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                // Re-render MathJax in the newly shown page
                 if (window.MathJax) {
                     MathJax.typesetPromise([document.getElementById(targetId)]);
                 }
+                // Refresh saved feedback list when navigating to feedback page
+                if (targetId === 'page-feedback') renderSavedFeedback();
             });
         });
 
@@ -1399,85 +1618,173 @@
             dashboard.classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-// ═══════════════════════════════════════════════
-//  SUBMIT TEST
-// ═══════════════════════════════════════════════
-function submitTest(testType) {
-    const key = answerKeys[testType];
-    const questions = Object.keys(key);
-    let score = 0;
-    let allAnswered = true;
 
-    questions.forEach(q => {
-        const selected = document.querySelector(`input[name="${q}"]:checked`);
-        if (!selected) { allAnswered = false; return; }
-        if (selected.value === key[q]) score++;
-    });
-
-    if (!allAnswered) {
-        showToast('⚠️ Please answer all questions before submitting.', '#e67e22');
-        return;
-    }
-
-    const total = questions.length;
-    const pct = Math.round((score / total) * 100);
-    const pass = pct >= 80;
-
-    // Update circle
-    const circle   = document.getElementById(testType + '-circle');
-    const numEl    = document.getElementById(testType + '-score-num');
-    const pctEl    = document.getElementById(testType + '-score-pct');
-    const titleEl  = document.getElementById(testType + '-result-title');
-    const msgEl    = document.getElementById(testType + '-result-msg');
-    const actionsEl = document.getElementById(testType + '-actions');
-
-    numEl.textContent = score + '/' + total;
-    pctEl.textContent = pct + '%';
-    circle.className = 'score-circle ' + (pass ? 'pass' : 'fail');
-
-    if (pass) {
-        titleEl.textContent = '🎉 Great Job!';
-        msgEl.textContent = 'You scored ' + pct + '%. Excellent understanding of the topic!';
-        actionsEl.innerHTML = '';
-    } else {
-        titleEl.textContent = '📘 Keep Practising';
-        msgEl.textContent = 'You scored ' + pct + '%. You need 80% to pass. Review the theory and try again.';
-        actionsEl.innerHTML =
-            '<button class="btn-theory" onclick="showPage(\'theory\')"><i class="fas fa-book"></i> Go to Theory</button>' +
-            '<button class="btn-retry" onclick="retryTest(\'' + testType + '\')"><i class="fas fa-redo"></i> Retry Test</button>';
-    }
-
-    // Hide questions, show result
-    document.getElementById(testType + '-questions').style.display = 'none';
-    const resultBox = document.getElementById(testType + '-result');
-    resultBox.classList.add('show');
-    resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-// ═══════════════════════════════════════════════
-//  RETRY TEST
-// ═══════════════════════════════════════════════
-function retryTest(testType) {
-    // Clear all radio selections
-    document.querySelectorAll(`#page-${testType} input[type="radio"]`).forEach(r => r.checked = false);
-
-    // Hide result, show questions
-    document.getElementById(testType + '-result').classList.remove('show');
-    document.getElementById(testType + '-questions').style.display = 'block';
-
-    document.getElementById('page-' + testType).scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-        // ── Star rating ──────────────────────────────────────────────
+        // ── Star rating (original, unchanged) ───────────────────────
         const stars = document.querySelectorAll('#starRating i');
         stars.forEach(star => {
             star.addEventListener('click', () => {
                 const val = parseInt(star.dataset.val);
+                document.getElementById('fb-rating').value = val;
                 stars.forEach(s => {
                     s.classList.toggle('active', parseInt(s.dataset.val) <= val);
                 });
             });
         });
+
+        // ── Answer keys ──────────────────────────────────────────────
+        const answerKeys = {
+            pretest: {
+                q1: 'B',   // Hooke's Law
+                q2: 'C',   // Velocity
+                q3: 'B'    // Second-order linear ODE
+            },
+            posttest: {
+                pq1: 'C',  // Overdamped
+                pq2: 'B',  // Exponential x sinusoidal
+                pq3: 'B',  // sqrt(k/m)
+                pq4: 'A',  // 2x''+4x'+8x=0
+                pq5: 'B'   // Critically damped (c²=36, 4mk=36)
+            }
+        };
+
+        // ── Submit test & show score ─────────────────────────────────
+        function submitTest(testType) {
+            const key       = answerKeys[testType];
+            const questions = Object.keys(key);
+            let score       = 0;
+            let allAnswered = true;
+
+            questions.forEach(q => {
+                const sel = document.querySelector(`input[name="${q}"]:checked`);
+                if (!sel) { allAnswered = false; return; }
+                if (sel.value === key[q]) score++;
+            });
+
+            if (!allAnswered) {
+                showToast('Please answer all questions before submitting.', '#e67e22');
+                return;
+            }
+
+            const total = questions.length;
+            const pct   = Math.round((score / total) * 100);
+            const pass  = pct >= 80;
+
+            document.getElementById(testType + '-score-num').textContent = score + '/' + total;
+            document.getElementById(testType + '-score-pct').textContent = pct + '%';
+
+            const circle = document.getElementById(testType + '-circle');
+            circle.className = 'score-circle ' + (pass ? 'pass' : 'fail');
+
+            document.getElementById(testType + '-result-title').textContent =
+                pass ? '🎉 Great Job!' : '📘 Keep Practising';
+
+            document.getElementById(testType + '-result-msg').textContent = pass
+                ? 'You scored ' + pct + '%. Excellent understanding of the topic!'
+                : 'You scored ' + pct + '%. You need 80% to pass. Review the theory and try again.';
+
+            const actionsEl = document.getElementById(testType + '-actions');
+            actionsEl.innerHTML = pass ? '' :
+                '<button class="btn-theory" onclick="goToTheory()"><i class="fas fa-book"></i> Go to Theory</button>' +
+                '<button class="btn-retry"  onclick="retryTest(\'' + testType + '\')"><i class="fas fa-redo"></i> Retry Test</button>';
+
+            // Hide questions, show result
+            document.getElementById(testType + '-questions').style.display = 'none';
+            const resultBox = document.getElementById(testType + '-result');
+            resultBox.classList.add('show');
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function retryTest(testType) {
+            document.querySelectorAll('#page-' + testType + ' input[type="radio"]')
+                .forEach(r => r.checked = false);
+            document.getElementById(testType + '-result').classList.remove('show');
+            document.getElementById(testType + '-questions').style.display = 'block';
+            document.getElementById('page-' + testType).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function goToTheory() {
+            // Navigate to theory card page (same as clicking the card)
+            dashboard.classList.add('hidden');
+            pages.forEach(p => p.classList.remove('active-page'));
+            document.getElementById('page-theory').classList.add('active-page');
+            cards.forEach(c => c.classList.remove('active'));
+            document.querySelector('[data-target="page-theory"]').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (window.MathJax) MathJax.typesetPromise([document.getElementById('page-theory')]);
+        }
+
+        // ── Feedback — save to localStorage ─────────────────────────
+        function saveFeedback() {
+            const name    = document.getElementById('fb-name').value.trim();
+            const email   = document.getElementById('fb-email').value.trim();
+            const rating  = document.getElementById('fb-rating').value;
+            const useful  = document.getElementById('fb-useful').value;
+            const comments = document.getElementById('fb-comments').value.trim();
+
+            if (!name)           { showToast('Please enter your name.', '#e74c3c'); return; }
+            if (rating === '0')  { showToast('Please select a star rating.', '#e74c3c'); return; }
+            if (!useful)         { showToast('Please select usefulness.', '#e74c3c'); return; }
+
+            const entry = {
+                name, email, rating: parseInt(rating), useful, comments,
+                timestamp: new Date().toLocaleString()
+            };
+
+            let saved = [];
+            try { saved = JSON.parse(localStorage.getItem('vlab_feedback') || '[]'); } catch(e) {}
+            saved.push(entry);
+            localStorage.setItem('vlab_feedback', JSON.stringify(saved));
+
+            showToast('Feedback saved successfully!', '#27ae60');
+            renderSavedFeedback();
+
+            // Reset form
+            document.getElementById('fb-name').value    = '';
+            document.getElementById('fb-email').value   = '';
+            document.getElementById('fb-rating').value  = '0';
+            document.getElementById('fb-useful').value  = '';
+            document.getElementById('fb-comments').value = '';
+            stars.forEach(s => s.classList.remove('active'));
+        }
+
+        function renderSavedFeedback() {
+            let saved = [];
+            try { saved = JSON.parse(localStorage.getItem('vlab_feedback') || '[]'); } catch(e) {}
+            const wrapper  = document.getElementById('feedback-saved-list');
+            const container = document.getElementById('feedback-entries');
+            if (!saved.length) { wrapper.style.display = 'none'; return; }
+            wrapper.style.display = 'block';
+            container.innerHTML = saved.slice().reverse().map(f => `
+                <div class="saved-feedback-entry">
+                    <div class="fb-meta">
+                        <strong>${esc(f.name)}${f.email ? ' &lt;' + esc(f.email) + '&gt;' : ''}</strong>
+                        <span>${esc(f.timestamp)}</span>
+                    </div>
+                    <div class="fb-stars">${'★'.repeat(f.rating)}<span style="color:#ccc">${'★'.repeat(5 - f.rating)}</span>
+                        &nbsp;<span class="fb-tag">${esc(f.useful)}</span>
+                    </div>
+                    ${f.comments ? '<p class="fb-comment">' + esc(f.comments) + '</p>' : ''}
+                </div>
+            `).join('');
+        }
+
+        function esc(str) {
+            const d = document.createElement('div');
+            d.appendChild(document.createTextNode(str || ''));
+            return d.innerHTML;
+        }
+
+        // ── Toast ────────────────────────────────────────────────────
+        function showToast(msg, color) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').textContent = msg;
+            toast.style.background = color || '#27ae60';
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+
+        // ── Init ─────────────────────────────────────────────────────
+        renderSavedFeedback();
     </script>
 </body>
 </html>
